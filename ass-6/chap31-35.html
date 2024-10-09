@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date and Time Programs</title>
+    <script>
+        // 1. Display current date and time
+        function displayCurrentDateTime() {
+            const now = new Date();
+            document.write("Current Date and Time: " + now + "<br>");
+        }
+
+        // 2. Alert current month in words
+        function alertCurrentMonth() {
+            const now = new Date();
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            alert("Current Month: " + monthNames[now.getMonth()]);
+        }
+
+        // 3. Alert first 3 letters of the current day
+        function alertCurrentDay() {
+            const now = new Date();
+            const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            alert("Current Day: " + dayNames[now.getDay()].slice(0, 3));
+        }
+
+        // 4. Message if it's Saturday or Sunday
+        function funDayMessage() {
+            const now = new Date();
+            if (now.getDay() === 0 || now.getDay() === 6) {
+                document.write("It's Fun day!<br>");
+            }
+        }
+
+        // 5. Message about the days of the month
+        function monthDaysMessage() {
+            const now = new Date();
+            if (now.getDate() < 16) {
+                document.write("First fifteen days of the month<br>");
+            } else {
+                document.write("Last days of the month<br>");
+            }
+        }
+
+        // 6. Minutes since midnight, Jan. 1, 1970
+        function minutesSinceEpoch() {
+            const now = new Date();
+            const minutesSinceEpoch = Math.floor(now.getTime() / 60000);
+            document.write("Minutes since epoch: " + minutesSinceEpoch + "<br>");
+        }
+
+        // 7. Check if it's AM or PM
+        function amPmMessage() {
+            const now = new Date();
+            alert(now.getHours() < 12 ? "It's AM" : "It's PM");
+        }
+
+        // 8. Date object for last day of last month of 2020
+        function lastDayOfLastMonth2020() {
+            const laterDate = new Date(2020, 11, 31); // December 31, 2020
+            document.write("Last day of last month of 2020: " + laterDate.toDateString() + "<br>");
+        }
+
+        // 9. Days since 1st Ramadan (June 18, 2015)
+        function daysSinceRamadan() {
+            const ramadanStart = new Date(2015, 5, 18); // June 18, 2015
+            const now = new Date();
+            const diffTime = Math.abs(now - ramadanStart);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            alert("Days since 1st Ramadan: " + diffDays);
+        }
+
+        // 10. Seconds between reference date and the beginning of 2015
+        function secondsSinceReferenceDate() {
+            const referenceDate = new Date(2015, 0, 1); // January 1, 2015
+            const now = new Date();
+            const diffSeconds = Math.floor((now - referenceDate) / 1000);
+            document.write("Seconds since reference date: " + diffSeconds + "<br>");
+        }
+
+        // 11. Current date and time, add an hour
+        function addHourToDate() {
+            const now = new Date();
+            const hours = now.getHours();
+            now.setHours(hours + 1);
+            document.write("Date and time after adding an hour: " + now + "<br>");
+        }
+
+        // 12. Date 100 years back
+        function dateHundredYearsBack() {
+            const now = new Date();
+            const hundredYearsBack = new Date(now.getFullYear() - 100, now.getMonth(), now.getDate());
+            alert("Date 100 years back: " + hundredYearsBack.toDateString());
+        }
+
+        // 13. Calculate birth year from age
+        function calculateBirthYear() {
+            const age = prompt("Please enter your age:");
+            const currentYear = new Date().getFullYear();
+            const birthYear = currentYear - age;
+            document.write("Your birth year is: " + birthYear + "<br>");
+        }
+
+        // 14. K-Electric bill
+        function generateBill() {
+            const customerName = "John Doe"; // Example name
+            const currentMonth = new Date().toLocaleString('default', { month: 'long' });
+            const units = 350; // Example units
+            const chargesPerUnit = 10; // Example charges
+            const netAmount = (units * chargesPerUnit).toFixed(2);
+            const latePaymentSurcharge = 50; // Example surcharge
+            const grossAmount = (parseFloat(netAmount) + latePaymentSurcharge).toFixed(2);
+
+            document.write(`Customer Name: ${customerName}<br>`);
+            document.write(`Current Month: ${currentMonth}<br>`);
+            document.write(`Number of units: ${units}<br>`);
+            document.write(`Charges per unit: ${chargesPerUnit}<br>`);
+            document.write(`Net Amount Payable (within Due Date): ${netAmount}<br>`);
+            document.write(`Late Payment Surcharge: ${latePaymentSurcharge}<br>`);
+            document.write(`Gross Amount Payable (after Due Date): ${grossAmount}<br>`);
+        }
+
+        // Run all functions
+        window.onload = function() {
+            displayCurrentDateTime();
+            alertCurrentMonth();
+            alertCurrentDay();
+            funDayMessage();
+            monthDaysMessage();
+            minutesSinceEpoch();
+            amPmMessage();
+            lastDayOfLastMonth2020();
+            daysSinceRamadan();
+            secondsSinceReferenceDate();
+            addHourToDate();
+            dateHundredYearsBack();
+            calculateBirthYear();
+            generateBill();
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>
